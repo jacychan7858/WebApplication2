@@ -1,0 +1,44 @@
+﻿@model WebApplication2.Models.Category
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { novalidate = "novalidate", enctype = "multipart/form-data" }))
+{
+    <div class="form-group row">
+        @Html.LabelFor(p => p.CategoryName, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(p => p.CategoryName, new { HtmlAttributes = new { @class = "form-control", placeholder = "CategoryName" } })
+            @Html.ValidationMessageFor(p => p.CategoryName, "", new { @class = "text-danger" })
+            @*@Html.TextBoxFor(p=>p.ModelNumber)*@
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(p => p.Description, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(p => p.Description, new { HtmlAttributes = new { @class = "form-control", placeholder = "Description" } })
+            @Html.ValidationMessageFor(p => p.Description, "", new { @class = "text-danger" })
+            @*@Html.TextBoxFor(p=>p.ModelNumber)*@
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(p => p.ProductImage, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(p => p.ProductImage, new { HtmlAttributes = new { type = "file", @class = "form-control", placeholder = "ProductImage" } })
+            @*<input type="file" class="form-control" name="ProductImage" />*@
+            <p class="text-danger">@ViewBag.message</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">新增</button>
+        </div>
+    </div>
+}
+<hr />
+@Html.ValidationSummary()
+
+
